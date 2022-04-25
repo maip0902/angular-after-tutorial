@@ -1,0 +1,10 @@
+version: "3"
+services:
+  frontend:
+    container_name: "after-tutorial"
+    build: .
+    ports:
+      - 4200:4200
+    volumes:
+      - ./after-tutorial:/project
+    tty: true
