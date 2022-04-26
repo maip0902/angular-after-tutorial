@@ -1,6 +1,4 @@
 <ul>
-  <li *ngFor="let user of users">
-    #{{ user.id }} {{ user.first_name }} {{ user.last_name }}
-  </li>
+  <app-user-list-component *ngIf="users$ | async as users" [users]="users"></app-user-list-component>
 </ul>
 

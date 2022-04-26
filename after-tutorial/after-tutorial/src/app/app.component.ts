@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,10 @@ import { User } from './user';
 })
 export class AppComponent {
   title = 'after-tutorial';
-  users: User[] = []
-
-  constructor(private http: HttpClient) {}
+  users$ = this.userService.users$;
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   ngOnInit() {
-    this.http.get<{data: User[]}>('https://reqres.in/api/users')
-    .subscribe((res) => {
-      this.users = res.data
-    })
+    this.userService.fetchUsers()
   }
 }
