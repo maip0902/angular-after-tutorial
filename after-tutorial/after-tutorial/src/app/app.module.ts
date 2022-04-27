@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { UserListItemComponentComponent } from './user-list-item-component/user-list-item-component.component';
-import { UserListComponentComponent } from './user-list-component/user-list-component.component';
-import { UserListFilterComponentComponent } from './user-list-filter-component/user-list-filter-component.component';
+import { UserListItemComponent } from './user-list-item-component/user-list-item-component';
+import { UserListComponent } from './user-list-component/user-list-component';
+import { UserListFilterComponent } from './user-list-filter-component/user-list-filter-component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListItemComponentComponent,
-    UserListComponentComponent,
-    UserListFilterComponentComponent
+    UserListItemComponent,
+    UserListComponent,
+    UserListFilterComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

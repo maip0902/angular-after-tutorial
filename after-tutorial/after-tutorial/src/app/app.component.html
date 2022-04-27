@@ -1,4 +1,10 @@
-<ul>
-  <app-user-list-component *ngIf="users$ | async as users" [users]="users"></app-user-list-component>
-</ul>
+<app-user-list-filter-component>
+  *ngIf="userListFilter$ | async as userListFilter" 
+  (testSetEvent)="click($event)"
+  >
+</app-user-list-filter-component>
+<div>
+  {{ test }}
+</div>
+<app-user-list-component *ngIf="users$ | async as users" [users]="users"></app-user-list-component>
 

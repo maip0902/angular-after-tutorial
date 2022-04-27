@@ -41,4 +41,16 @@ export class UserService {
       }
     }));
   }
+
+  setNameFilter(nameFilter: string) {
+    this.store.update(state => ({
+      ...state,
+      userList: {
+        ...state.userList,
+        filter: {
+          nameFilter
+        }
+      }
+    }));
+  }
 }
