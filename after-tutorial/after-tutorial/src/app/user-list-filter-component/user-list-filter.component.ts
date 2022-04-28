@@ -1,20 +1,18 @@
-import { Component, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
 import { UserListFilter } from '../state';
 
 @Component({
   selector: 'app-user-list-filter-component',
-  templateUrl: './user-list-filter-component.html',
-  styleUrls: ['./user-list-filter-component.css']
+  templateUrl: './user-list-filter.component.html',
+  styleUrls: ['./user-list-filter.component.css']
 })
 export class UserListFilterComponent {
   @Input() set value(value: UserListFilter) {
     this.setFormValue(value);
   }
-  @Output() valueChangeEvent = new EventEmitter<UserListFilter>();
-  @Output() 
-  testSetEvent = new EventEmitter();
+  @Output() valueChange = new EventEmitter<UserListFilter>();
 
   form: FormGroup;
 
@@ -27,22 +25,13 @@ export class UserListFilterComponent {
   }
 
   ngOnInit() {
-    this.form.valueChanges.subscribe(value => {
-      this.valueChangeEvent.emit(value);
+    this.form.valueChanges.pipe(takeUntil(this.onDestroy)).subscribe(value => {
+      this.valueChange.emit(value);
     });
-  }
-
-  ngOnDestroy() {
-    this.valueChangeEvent.emit({nameFilter: ''} as UserListFilter);
   }
 
   private setFormValue(value: UserListFilter) {
     this.form.setValue(value, { emitEvent: false });
   }
-
-  testSet() {
-    console.log('clicked')
-    this.testSetEvent.emit("success!!!")
-  }
-
+  
 }

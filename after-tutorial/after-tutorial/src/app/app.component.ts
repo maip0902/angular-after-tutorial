@@ -8,23 +8,17 @@ import { UserListFilter } from './state';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'after-tutorial';
-  users$ = this.userService.users$;
-  userListFilter$ = this.userService.filter$;
-  test = 'not clicked'
-  constructor(private userService: UserService) {}
+  users$ = this.userList.users$;
+  userListFilter$ = this.userList.filter$;
+
+  constructor(private userList: UserService) {}
 
   ngOnInit() {
-    this.userService.fetchUsers()
+    this.userList.fetchUsers();
   }
 
   setUserListFilter(value: UserListFilter) {
-    console.log(value)
-    this.userService.setNameFilter(value.nameFilter);
-  }
-
-  click(value: string) {
-    this.test = value
+    this.userList.setNameFilter(value.nameFilter);
   }
 
 }
