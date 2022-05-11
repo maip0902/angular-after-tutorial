@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { UserListItemComponent } from './user-list-item-component/user-list-item.component';
 import { UserListComponent } from './user-list-component/user-list.component';
 import { UserListFilterComponent } from './user-list-filter-component/user-list-filter.component';
+import { UserDetailPageComponent } from './user-detail-page/user-detail-page.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { UserListFilterComponent } from './user-list-filter-component/user-list-
     UserListItemComponent,
     UserListFilterComponent,
     UserListComponent,
+    UserDetailPageComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

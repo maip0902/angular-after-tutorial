@@ -1,6 +1,8 @@
 <app-user-list-filter-component
-  *ngIf="userListFilter$ | async as userListFilter" 
+  *ngIf="userListFilter$ | async as userListFilter"
   [value]="userListFilter"
   (valueChange)="setUserListFilter($event)">
   </app-user-list-filter-component>
+  <router-outlet></router-outlet>
 <app-user-list-component *ngIf="users$ | async as users" [users]="users"></app-user-list-component>
+
